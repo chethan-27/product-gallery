@@ -1,21 +1,31 @@
 import { lazy, Suspense, useEffect, useState } from "react";
+import { productsData } from '../data/products-data';
 import './product-gallery.css';
 
-const ImageComponent = lazy(() => import('./components/image-component.jsx').then(module => ({ default: module.ImageComponent })));
+const ImageComponent = lazy(() => import('../components').then(module => ({ default: module.ImageComponent })));
 const ProductGallery = () => {
 
     const [loading, setLoading] = useState(true);
     const [products, setProducts] = useState([]);
 
+    const dataAsync = () => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(productsData);
+            }, 1000);
+        });
+    }
+
     const fetchData = async () => {
         try {
-            const response = await fetch('https://fakestoreapi.com/products').then(res => {
-                if (!res.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return res.json();
-            });
-            setProducts(response);
+            // const response = await fetch('https://fakestoreapi.com/products').then(res => {
+            //     if (!res.ok) {
+            //         throw new Error('Network response was not ok');
+            //     }
+            //     return res.json();
+            // });
+            let data = await dataAsync();
+            setProducts(data);
         } catch (error) {
             console.error('Error fetching data:', error);
         } finally {
@@ -61,6 +71,9 @@ const ProductGallery = () => {
                                         <div className="product-title">{product.title}</div>
                                         {renderImage(product.image, product.title)}
                                         <p>${product.price}</p>
+                                        <button className="view-details-button">
+                                            <a href={`/product/${product.id}`}>View Details</a>
+                                        </button>
                                     </div>
                                 ))
                         }

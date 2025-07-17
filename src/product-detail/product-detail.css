@@ -1,0 +1,21 @@
+.product-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.product-detail-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.back-button {
+    align-self: baseline;
+    background: none;
+}
+
+img {
+    width: 80%;
+    height: 60%;
+}
