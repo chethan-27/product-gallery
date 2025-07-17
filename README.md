@@ -7,4 +7,4 @@ It was created purely for **learning purposes** and experimentation.
 
 ## 🚀 Live Demo
 
-The app is live: [Click here](https://my.link.com)
+The app is live: [Click here](https://product-gallery-lovat.vercel.app/)
