@@ -28,6 +28,13 @@
     justify-content: space-evenly;
 }
 
+.product-title {
+    width: 75%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 img {
     width: 5rem;
     height: auto;
